@@ -1,7 +1,9 @@
-name: Build and Publish NuGet
+name: Build and Package
 
 on:
   push:
+    branches: [ main ]
+  pull_request:
     branches: [ main ]
 
 jobs:
@@ -9,8 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
@@ -18,19 +19,19 @@ jobs:
         dotnet-version: '7.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore
-
-    - name: Clean
-      run: dotnet clean
+      run: dotnet restore AzureTestCaseAssociator/AzureTestCaseAssociator.sln
 
     - name: Build
-      run: dotnet build --no-restore --framework netstandard2.0
+      run: dotnet build AzureTestCaseAssociator/AzureTestCaseAssociator.sln --no-restore
 
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test AzureTestCaseAssociator/AzureTestCaseAssociator.sln --no-build
 
     - name: Pack
-      run: dotnet pack --no-build --output nupkg --no-restore 
+      run: dotnet pack AzureTestCaseAssociator/AzureTestCaseAssociator.sln --no-build --output nupkgs
 
-    - name: Push
-      run: dotnet nuget push *.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+    - name: Publish NuGet package
+      uses: actions/upload-artifact@v2
+      with:
+        name: NuGet package
+        path: '**/*.nupkg'
