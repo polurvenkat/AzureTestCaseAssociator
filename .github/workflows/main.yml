@@ -28,7 +28,7 @@ jobs:
       run: dotnet test AzureTestCaseAssociatorSln.sln --no-build
 
     - name: Pack
-      run: dotnet pack AzureTestCaseAssociator\AzureTestCaseAssociator.csproj --output nupkgs
+      run: dotnet pack AzureTestCaseAssociator/AzureTestCaseAssociator.csproj --output nupkgs
 
     - name: Publish NuGet package
       uses: actions/upload-artifact@v2
