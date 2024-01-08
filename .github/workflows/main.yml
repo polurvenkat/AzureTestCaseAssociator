@@ -35,3 +35,6 @@ jobs:
       with:
         name: NuGet package
         path: '**/*.nupkg'
+
+    - name: Push to NuGet
+      run: dotnet nuget push *.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
