@@ -19,16 +19,16 @@ jobs:
         dotnet-version: '7.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore AzureTestCaseAssociator/AzureTestCaseAssociator.sln
+      run: dotnet restore AzureTestCaseAssociator.sln
 
     - name: Build
-      run: dotnet build AzureTestCaseAssociator/AzureTestCaseAssociator.sln --no-restore
+      run: dotnet build AzureTestCaseAssociator.sln --no-restore
 
     - name: Test
-      run: dotnet test AzureTestCaseAssociator/AzureTestCaseAssociator.sln --no-build
+      run: dotnet test AzureTestCaseAssociator.sln --no-build
 
     - name: Pack
-      run: dotnet pack AzureTestCaseAssociator/AzureTestCaseAssociator.sln --no-build --output nupkgs
+      run: dotnet pack AzureTestCaseAssociator.sln --no-build --output nupkgs
 
     - name: Publish NuGet package
       uses: actions/upload-artifact@v2
