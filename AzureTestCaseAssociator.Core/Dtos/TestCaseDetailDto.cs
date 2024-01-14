@@ -4,7 +4,7 @@ namespace AzureTestCaseAssociator.Core.Dtos
     {
         public string? TestCaseId { get; set; }
         public string? TestCaseName { get; set; }
-        public string? TestCasePath { get; set; }
+        public string? AssemblyName { get; set; }
         public string? TestCasePriority { get; set; }
         public string? TestCaseSeverity { get; set; }
         public string? TestCaseType { get; set; }

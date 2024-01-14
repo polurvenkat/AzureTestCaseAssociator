@@ -1,24 +1,23 @@
 using AzureTestCaseAssociator.Core.Contract;
 using AzureTestCaseAssociator.Core.Dtos;
-
+using System.Collections.Generic;
+using AzureTestCaseAssociator.Core.Manager;
+using System.Threading.Tasks;
 
 namespace AzureTestCaseAssociator.Core.Facade
 {
     public class AzureServiceFacade : IAzureServiceFacade
     {
-        private readonly IAzureServiceGateway _azureServiceGateway;
-        //private readonly IAzureServiceMapper _azureServiceMapper;
+        private readonly IAzureServiceManager _azureServiceManager;
 
-        public AzureServiceFacade(IAzureServiceGateway azureServiceGateway/*, IAzureServiceMapper azureServiceMapper*/)
+        public AzureServiceFacade(IAzureServiceManager azureServiceManager)
         {
-            _azureServiceGateway = azureServiceGateway;
-            //_azureServiceMapper = azureServiceMapper;
+            _azureServiceManager = azureServiceManager;
         }
 
-        public async Task<string> AssociateToTestCaseAsync(TestCaseDetailDto testCaseDetailDto, string devopsAccessToken)
+        public async Task<List<KeyValuePair<string, int>>> AssociateToTestCaseAsync(TestCaseDetailDto testCaseDetailDto, string devopsAccessToken)
         {
-            //var testDto = _azureServiceMapper.MapToTestDto(testCaseDetailDto);
-            var result = await _azureServiceGateway.AssociateToTestCaseAsync(testCaseDetailDto, devopsAccessToken);
+            var result = await _azureServiceManager.AssociateToTestCaseAsync(testCaseDetailDto, devopsAccessToken);
             return result;
         }
     }

@@ -8,6 +8,6 @@ namespace AzureTestCaseAssociator.Core.Contract
 {
     public interface IAzureServiceGateway
     {
-        public Task<string> AssociateToTestCaseAsync(TestCaseDetailDto testCaseDetailDto, string devopsAccessToken);
+        public Task<string> AssociateToTestCaseAsync(HttpRequestMessage httpRequestMessage);
     }
 }

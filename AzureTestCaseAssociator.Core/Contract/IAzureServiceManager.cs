@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace AzureTestCaseAssociator.Core.Contract
 {
-    public interface IAzureServiceFacade
+    public interface IAzureServiceManager
     {
         public Task<List<KeyValuePair<string, int>>> AssociateToTestCaseAsync(TestCaseDetailDto testCaseDetailDto, string devopsAccessToken);
     }
