@@ -1,12 +1,10 @@
 using System;
-using System.Net.Http;
 using AzureTestCaseAssociator.Core.Contract;
 using AzureTestCaseAssociator.Core.Dtos;
-using System.Threading.Tasks;
 
-namespace AzureTestCaseAssociator.Core.Contract
+namespace AzureTestCaseAssociator.Core
 {
-    public interface IAzureServiceGateway
+    public interface IAzureServiceFacade
     {
         public Task<string> AssociateToTestCaseAsync(TestCaseDetailDto testCaseDetailDto, string devopsAccessToken);
     }

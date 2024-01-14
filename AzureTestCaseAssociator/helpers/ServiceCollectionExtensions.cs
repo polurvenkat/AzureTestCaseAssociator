@@ -10,8 +10,8 @@ namespace AzureTestCaseAssociator
         public static IServiceCollection RegisterServices(this IServiceCollection services)
         {
            services.AddHttpClient<IAzureServiceGateway, AzureServiceGateway>();
-            
-            return services;
+           
+           return services;
         }
     }
 }
