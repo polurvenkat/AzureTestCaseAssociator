@@ -38,7 +38,7 @@ namespace AzureTestCaseAssociator.Core.Manager
                     if (!string.IsNullOrEmpty(formattedTestCaseId) && int.TryParse(formattedTestCaseId, out int testcasewithId))
                     {
                         // Get the devops request dto
-                        var devopsRequestDto = DevopsUtilsFactory.GetDevOpsRequest(devopsAccessToken);
+                        var devopsRequestDto = DevopsUtilsFactory.GetDevOpsRequest(devopsAccessToken, formattedTestCaseId);
 
                         // Get the test case dto
                         var testCaseDetails = RequestBuilderFactory.GetRequestForTestCaseAssociation(testCaseDetailDto, testcasewithId);

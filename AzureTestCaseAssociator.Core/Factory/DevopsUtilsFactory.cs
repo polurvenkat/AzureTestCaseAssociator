@@ -13,7 +13,7 @@ namespace AzureTestCaseAssociator.Core.Factory
         /// </summary>
         /// <param name="devopsAccessToken">The DevOps access token.</param>
         /// <returns>An instance of <see cref="HttpRequestMessage"/>.</returns>
-        public static HttpRequestMessage GetDevOpsRequest(string devopsAccessToken)
+        public static HttpRequestMessage GetDevOpsRequest(string devopsAccessToken, string testCaseId)
         {
             var authenticationHeaderValue = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($":{devopsAccessToken}")));
 
@@ -25,7 +25,8 @@ namespace AzureTestCaseAssociator.Core.Factory
                     { HttpRequestHeader.Authorization.ToString(), authenticationHeaderValue.ToString() },
                     { HttpRequestHeader.Accept.ToString(), "application/json" },
                     { HttpRequestHeader.ContentType.ToString(), "application/json-patch+json" }
-                }
+                },
+                RequestUri = new Uri($"drivetimeinc/servicing/_apis/wit/workitems/{testCaseId}?api-version=5.0")
             };
 
             return request;
