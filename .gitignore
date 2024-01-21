@@ -8,3 +8,7 @@ AzureTestCaseAssociator.Core/bin/
 AzureTestCaseAssociator.Core/obj/
 
 nupkgs/
+
+AzureTestCaseAssociator.Tests/bin/
+
+AzureTestCaseAssociator.Tests/obj/
